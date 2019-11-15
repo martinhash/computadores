@@ -1,25 +1,39 @@
 <div class="row">
   <div class="col-md-6" align="center">
-    <button class="btn-light btn">TODOS</button>
+    <button (click)="obtenerTodosProductos()" class="btn-light btn">TODOS</button>
   </div>
   <div class="col-md-6" align="center">
-    <button class="btn-light btn">Mostrar CPU's superior 8GB</button>
+    <button (click)="fnObtenerProdSuperior()" class="btn-light btn">Mostrar CPU's superior 8GB</button>
   </div>
 </div>
-<hr />
-<table *ngIf="prodsup" class="table table-hover">
+<br />
+<div *ngIf="cargando" align="center" class="row col-md-12 animated fadeIn" >
+    <div class="lds-default">
+      <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
+</div>
+
+<table *ngIf="!cargando" class="table table-hover  animated fadeIn">
   <thead>
     <tr style="font-weight:bold;">
+      <td>Nombre</td>
       <td>Procesador</td>
       <td>Memoria GB</td>
       <td>Disco duro</td>
     </tr>
   </thead>
   <tbody>
-    <tr  *ngFor="let producto of productos">
+    <tr [hidden]="!prodsup" *ngFor="let producto of productosFiltrado" class="animated fadeIn">
+      <td>{{producto.name}}</td>
       <td>{{producto.processor}}</td>
       <td>{{producto.memory_gb}}</td>
-      <td><button (click)="fnModalHardDrive(producto)" >{{producto.hard_drive.brand}} {{producto.hard_drive.model}}</button></td>
+      <td><button (click)="fnModalHardDrive(producto)">{{producto.hard_drive.brand}} {{producto.hard_drive.model}}</button></td>
+    </tr>
+    <tr [hidden]="prodsup" *ngFor="let producto of productos" class="animated fadeIn">
+      <td>{{producto.name}}</td>
+      <td>{{producto.processor}}</td>
+      <td>{{producto.memory_gb}}</td>
+      <td><button (click)="fnModalHardDrive(producto)">{{producto.hard_drive.brand}} {{producto.hard_drive.model}}</button></td>
     </tr>
   </tbody>
 </table>
