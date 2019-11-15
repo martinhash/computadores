@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6" align="center">
+    <button class="btn-light btn">TODOS</button>
+  </div>
+  <div class="col-md-6" align="center">
+    <button class="btn-light btn">Mostrar CPU's superior 8GB</button>
+  </div>
+</div>
+<hr />
+<table *ngIf="prodsup" class="table table-hover">
+  <thead>
+    <tr style="font-weight:bold;">
+      <td>Procesador</td>
+      <td>Memoria GB</td>
+      <td>Disco duro</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let producto of productos">
+      <td>{{producto.processor}}</td>
+      <td>{{producto.memory_gb}}</td>
+      <td><button (click)="fnModalHardDrive(producto)" >{{producto.hard_drive.brand}} {{producto.hard_drive.model}}</button></td>
+    </tr>
+  </tbody>
+</table>
+
