@@ -1,0 +1,47 @@
+a {
+  color: #0366d6;
+}
+
+a {
+  transition-duration: 0.1s;
+  cursor: pointer;
+}
+.btn-info:focus, btn-info:active, btn-info:link {
+  box-shadow: 0 0 0 0.2rem rgba(58,176,195,.5);
+  background: #0e7b8c;
+}
+.container {
+  font-weight: 300 !important;
+}
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}

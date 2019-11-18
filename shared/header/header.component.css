@@ -1,0 +1,14 @@
+.txt-navbar-left {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  text-align: center !important;
+  font-size:0.8em;
+}
+li{
+  text-align: center;
+}
+.navbar {
+  font-weight: 300 !important;
+}

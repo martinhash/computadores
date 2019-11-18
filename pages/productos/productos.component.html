@@ -1,0 +1,55 @@
+<br />
+<div class="container">
+
+  <div class="row" *ngIf="!cargando">
+    <div class="col-md-12">
+
+      <div class="row justify-content-center">
+        <button (click)="fnObtenerProdSuperior()" [hidden]="prodsup" class="btn-info btn">Listar Memorias superior a 8GB</button>
+        <button [hidden]="!prodsup" (click)="obtenerTodosProductos()" class="btn-info btn"><span> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Volver</span></button>
+      </div>
+      <ul>
+        <li>
+          Listando
+          <span [hidden]="prodsup"><b>todos </b> </span>
+          los computadores con memoria
+          <span [hidden]="!prodsup"><b>superior </b>a 8 GB </span>
+          del departamento.
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="cargando" align="center" class="row col-md-12 animated fadeIn justify-content-center">
+    <div class="lds-ellipsis">
+      <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
+  </div>
+
+  <table *ngIf="!cargando" class="table table-hover  animated fadeIn">
+    <thead style="BACKGROUND: #343a40;
+    color: white;">
+      <tr style="font-weight:300!important">
+        <td>Nombre</td>
+        <td>Procesador</td>
+        <td>Memoria (RAM)</td>
+        <td>Disco duro</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [hidden]="!prodsup" *ngFor="let producto of productosFiltrado" class="animated fadeIn">
+        <td>{{producto.name}}</td>
+        <td>{{producto.processor}}</td>
+        <td>{{producto.memory_gb}}</td>
+        <td><a (click)="fnModalHardDrive(producto)">{{producto.hard_drive.brand}} {{producto.hard_drive.model}}</a></td>
+      </tr>
+      <tr [hidden]="prodsup" *ngFor="let producto of productos" class="animated fadeIn">
+        <td>{{producto.name}}</td>
+        <td>{{producto.processor}}</td>
+        <td>{{producto.memory_gb}}</td>
+        <td><a (click)="fnModalHardDrive(producto)">{{producto.hard_drive.brand}} {{producto.hard_drive.model}}</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
